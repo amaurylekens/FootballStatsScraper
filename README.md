@@ -8,7 +8,7 @@ This command-line tool can retrieve football stats from the flashcore website. I
 We get the statistics on this type of page.
 
 <p align="center">
-  <img src="https://github.com/amaurylekens/FootballStatsScraper/blob/master/images/page.png" style="width: 50%; height: 50%"/>
+  <img src="https://github.com/amaurylekens/FootballStatsScraper/blob/master/images/page.png" style="width: 10%; height: 10%"/>
 </p>
 
 The statistics recovered are as follows: Goals, Ball Possession, Goal Attempts, Shots on Goal, Shots off Goal, Blocked Shots, Free Kicks, Corner Kicks, Offsides, Goalkeeper Saves, Fouls, Total Passes (for the two teams). So we recovered 24 stats.
