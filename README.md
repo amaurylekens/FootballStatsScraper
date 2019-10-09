@@ -7,7 +7,9 @@ This command-line tool can retrieve football stats from the flashcore website. I
 
 We get the statistics on this type of page.
 
-![page](https://github.com/amaurylekens/FootballStatsScraper/blob/master/images/page.png)
+<p align="center">
+  <img src="https://github.com/amaurylekens/FootballStatsScraper/blob/master/images/page.png"/>
+</p>
 
 The statistics recovered are as follows: Goals, Ball Possession, Goal Attempts, Shots on Goal, Shots off Goal, Blocked Shots, Free Kicks, Corner Kicks, Offsides, Goalkeeper Saves, Fouls, Total Passes (for the two teams). So we recovered 24 stats.
 
@@ -15,7 +17,7 @@ The statistics recovered are as follows: Goals, Ball Possession, Goal Attempts, 
 
 ### Dependencies
 
-* The chromedriver (download [heer](https://chromedriver.chromium.org/downloads))
+* The chromedriver (download [here](https://chromedriver.chromium.org/downloads))
 * Python librairies : csv, argprse, tqdm, selenium
 
 ### Configuration
@@ -34,3 +36,14 @@ The "url.txt" file contains the urls that the program will scrape.
 
 ### Launch
 
+* Normal mode
+
+```bash
+python3 scraper.py [url file path] [csv file] 
+``` 
+
+* Verbose mode
+
+```bash
+python3 scraper.py [url file path] [csv file] -v
+```
