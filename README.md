@@ -5,13 +5,15 @@ This command-line tool can retrieve football stats from the flashcore website. I
 ## Stats recuperated
 
 
-We get the statistics on this type of page.
+We get the statistics on this type of page :
 
 <p align="center">
   <img src="https://github.com/amaurylekens/FootballStatsScraper/blob/master/images/page.png" style="width: 10%; height: 10%"/>
 </p>
 
 The statistics recovered are as follows: Goals, Ball Possession, Goal Attempts, Shots on Goal, Shots off Goal, Blocked Shots, Free Kicks, Corner Kicks, Offsides, Goalkeeper Saves, Fouls, Total Passes (for the two teams). So we recovered 24 stats.
+
+All the stats are stored in a csv file.
 
 ## Getting started 
 
@@ -32,7 +34,7 @@ The repo is organized like this :
 └── .gitignore
 ``` 
 
-The "url.txt" file contains the urls that the program will scrape.
+The *url.txt* file contains the urls that the program will scrape.
 
 ### Launch
 
