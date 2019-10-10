@@ -89,8 +89,14 @@ def get_stats_by_match_id(match_id, driver, selected_stats):
                                                     away_stats):
 
             if stat_title in selected_stats:
-                row.append(int(home_stat.replace("%", "")))
-                row.append(int(away_stat.replace("%", "")))
+                if home_stat.replace("%", "") != "":
+                    row.append(int(home_stat.replace("%", "")))
+                else:
+                    row.append(home_stat.replace("%", ""))
+                if away_stat.replace("%", "") != "":
+                    row.append(int(away_stat.replace("%", "")))
+                else:
+                    row.append(away_stat.replace("%", ""))
                 n += 1
 
         valid = not("" in row)
