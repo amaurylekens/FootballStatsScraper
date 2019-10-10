@@ -2,7 +2,9 @@ language: python
 python:
     - "3.7.3"
     
-os: osx
+before_install:
+  - brew update > /dev/null
+  - brew cask install google-chrome
 
 install:
     pip install -r requirements.txt
