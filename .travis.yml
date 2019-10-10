@@ -1,9 +1,8 @@
 language: python
 python:
-    - "3.6"
+    - "3.7.3"
 
 os: osx
-node_js: '12'
 sudo: required
 env: HOMEBREW_CASK_OPTS='--appdir=/Applications'
  
