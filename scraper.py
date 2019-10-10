@@ -73,8 +73,7 @@ with open(args.csv_file, mode='w') as f:
             # variable to check if there isn't empty value
             valid = False
             while not valid:
-                match_path = "https://www.flashscore.com/match/{}\
-                /#match-statistics;0".format(match_id)
+                match_path = "https://www.flashscore.com/match/{}/#match-statistics;0".format(match_id)
                 driver.get(match_path)
                 WebDriverWait(driver, 60).until(EC.presence_of_element_located(
                     (By.ID, "tab-statistics-0-statistic")))
