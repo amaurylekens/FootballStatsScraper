@@ -66,8 +66,9 @@ with open(args.csv_file, mode='w') as f:
                         "event__match--static")]
 
         # recuperate statistics for each matchs and write in csv file
-        for match_id, i in
-        zip(match_ids, tqdm(range(0, len(match_ids)), desc=title)):
+        for match_id, i in zip(match_ids, 
+                               tqdm(range(0, len(match_ids)), 
+                               desc=title)):
 
             # variable to check if there isn't empty value
             valid = False
@@ -99,8 +100,9 @@ with open(args.csv_file, mode='w') as f:
 
                 # store the stats which are desired
                 n = 0
-                for stat_title, home_stat, away_stat in
-                zip(stat_titles, home_stats, away_stats):
+                for stat_title, home_stat, away_stat in zip(stat_titles, 
+                                                            home_stats, 
+                                                            away_stats):
 
                     if stat_title in selected_stats:
                         row.append(home_stat.replace("%", ""))
