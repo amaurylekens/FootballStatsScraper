@@ -28,8 +28,9 @@ before_install:
       brew update > /dev/null
       brew cask install google-chrome
     fi
+    
 install:
-  - npm install
+    pip install -r requirements.txt
 
 before_script:
   - |
