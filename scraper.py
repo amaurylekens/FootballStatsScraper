@@ -13,7 +13,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
 def get_match_ids_by_url(url, driver, wait_time):
+
+    """Recuperate the ids of the matchs in the page
+
+        :param url: url of the page
+        :param driver: chromedriver object
+        :param wait_time: time to wait for some event (js loading, ...)
+        :return: tupple with a list of the ids and the title of the page"""
 
     driver.get(url)
     WebDriverWait(driver, 20).until(
@@ -38,11 +46,19 @@ def get_match_ids_by_url(url, driver, wait_time):
     return (match_ids, title)
 
 
-def get_stats_by_match_id(match_id, selected_stats, driver):
-  
+def get_stats_by_match_id(match_id, driver, selected_stats):
+
+    """Recuperate the stats of a match by his id
+
+        :param match_id: the id of the match
+        :param driver: chromedriver object
+        :param selected_stats: list of stats to recuperate
+        :return: a list with the stats of a None object (if invalid)"""
+
     valid = False
     while not valid:
-        match_path = "https://www.flashscore.com/match/{}/#match-statistics;0".format(match_id)
+        match_path = "{}/#match-statistics;0".format(match_id)
+        match_path = "https://www.flashscore.com/match/{}".format(match_path)
         driver.get(match_path)
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.ID, "tab-statistics-0-statistic")))
@@ -52,8 +68,8 @@ def get_stats_by_match_id(match_id, selected_stats, driver):
 
         # recuperate the numbers of goals and store it
         goals = driver.find_elements_by_class_name("scoreboard")
-        row.append(goals[0].text)
-        row.append(goals[1].text)
+        row.append(int(goals[0].text))
+        row.append(int(goals[1].text))
 
         # recuperate the name of the stats and the values
         stat_titles = [stat.text for stat in
@@ -68,13 +84,13 @@ def get_stats_by_match_id(match_id, selected_stats, driver):
 
         # store the stats which are desired
         n = 0
-        for stat_title, home_stat, away_stat in zip(stat_titles, 
-                                                    home_stats, 
+        for stat_title, home_stat, away_stat in zip(stat_titles,
+                                                    home_stats,
                                                     away_stats):
 
             if stat_title in selected_stats:
-                row.append(home_stat.replace("%", ""))
-                row.append(away_stat.replace("%", ""))
+                row.append(int(home_stat.replace("%", "")))
+                row.append(int(away_stat.replace("%", "")))
                 n += 1
 
         valid = not("" in row)
@@ -122,16 +138,14 @@ def main():
             match_ids, title = get_match_ids_by_url(url, driver, args.time)
 
             # recuperate statistics for each matchs and write in csv file
-            for match_id, i in zip(match_ids, 
-                                   tqdm(range(0, len(match_ids)), 
-                                   desc=title)):
+            for match_id, i in zip(match_ids,
+                                   tqdm(range(0, len(match_ids)), desc=title)):
 
                 row = get_stats_by_match_id(match_id, selected_stats, driver)
                 if row is not None:
                     f_writer.writerow(row)
                     count += 1
 
+
 if __name__ == '__main__':
     main()
-
-
