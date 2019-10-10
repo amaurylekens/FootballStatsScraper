@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "chromedriver": "^76.0.1",
+    "selenium-webdriver": "^4.0.0-alpha.5"
+  }
+}

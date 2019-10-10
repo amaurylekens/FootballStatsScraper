@@ -2,6 +2,15 @@ language: python
 python:
     - "3.6"
 
+os: osx
+node_js: '12'
+sudo: required
+env: HOMEBREW_CASK_OPTS='--appdir=/Applications'
+ 
+before_install:
+  - brew update > /dev/null
+  - brew cask install google-chrome
+
 install:
     pip install -r requirements.txt
 
