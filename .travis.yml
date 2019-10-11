@@ -28,4 +28,7 @@ before_script:
     fi
 
 script:
-    - pytest -s test.py
+    - pytest -s --cov=scraper test.py
+
+after_success:
+    - codecov
