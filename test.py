@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from scraper import get_stats_by_match_id
+from scraper.scraper import get_stats_by_match_id
 
 
 tests_values = [("Mi67N5em", [0, 2, 76, 24, 18, 7, 2, 2, 6, 3, 10, 2,
