@@ -68,8 +68,14 @@ def get_stats_by_match_id(match_id, driver, selected_stats):
 
         # recuperate the numbers of goals and store it
         goals = driver.find_elements_by_class_name("scoreboard")
-        row.append(int(goals[0].text))
-        row.append(int(goals[1].text))
+        if int(goals[0].text) != "":
+            row.append(int(goals[0].text))
+        else:
+            row.append(goals[0].text)
+        if int(goals[1].text) != "":
+            row.append(int(goals[1].text))
+        else:
+            row.append(goals[1].text)
 
         # recuperate the name of the stats and the values
         stat_titles = [stat.text for stat in
