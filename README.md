@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/amaurylekens/FootballStatsScraper.svg?branch=master)](https://travis-ci.org/amaurylekens/FootballStatsScraper)
 [![codecov](https://codecov.io/gh/amaurylekens/FootballStatsScraper/branch/master/graph/badge.svg)](https://codecov.io/gh/amaurylekens/FootballStatsScraper)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # A Football stats scraper
 
