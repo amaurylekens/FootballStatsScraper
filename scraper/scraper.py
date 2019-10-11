@@ -4,6 +4,7 @@ import sys
 import time
 import csv
 import argparse
+import yaml
 
 from tqdm import tqdm
 from selenium import webdriver
@@ -116,12 +117,6 @@ def get_stats_by_match_id(match_id, driver, selected_stats):
 
 def main():
 
-    # define selected stats
-    selected_stats = ["Ball Possession", "Goal Attempts", "Shots on Goal",
-                      "Shots off Goal", "Blocked Shots", "Free Kicks",
-                      "Corner Kicks", "Offsides", "Goalkeeper Saves",
-                      "Fouls", "Total Passes"]
-
     # manage args
     parser = argparse.ArgumentParser(prog='scraper')
     parser.add_argument('csv_file', help="path of the csv file")
@@ -135,15 +130,19 @@ def main():
     chrome_options.add_argument("--headless")
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"),
+    driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver_osx"),
                               options=chrome_options)
 
-    # recuperate the paths in the file
-    urls = [line.rstrip('\n') for line in open(args.url_file)]
+    with open(args.url_file) as f_params:
+        data = yaml.load(f_params, Loader=yaml.FullLoader)
+        urls = data['urls']
+        selected_stats = data['stats']
 
     count = 0
     with open(args.csv_file, mode='w') as f:
-        f_writer = csv.writer(f, delimiter=',', quotechar='"',
+        f_writer = csv.writer(f, 
+                              delimiter=',', 
+                              quotechar='"',
                               quoting=csv.QUOTE_MINIMAL)
 
         for url in urls:
@@ -153,7 +152,7 @@ def main():
             for match_id, i in zip(match_ids,
                                    tqdm(range(0, len(match_ids)), desc=title)):
 
-                row = get_stats_by_match_id(match_id, selected_stats, driver)
+                row = get_stats_by_match_id(match_id, driver, selected_stats)
                 if row is not None:
                     f_writer.writerow(row)
                     count += 1
