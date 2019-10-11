@@ -130,7 +130,7 @@ def main():
     chrome_options.add_argument("--headless")
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver_osx"),
+    driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"),
                               options=chrome_options)
 
     with open(args.url_file) as f_params:
