@@ -50,7 +50,7 @@ def test_get_match_ids_by_url(url, ids_tested):
     chrome_options.add_argument("--headless")
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver_osx"),
+    driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"),
     	                      options=chrome_options)
 
     ids = get_match_ids_by_url(url, driver, 10)[0]
