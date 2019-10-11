@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/amaurylekens/FootballStatsScraper.svg?branch=master)](https://travis-ci.org/amaurylekens/FootballStatsScraper)
+
 # A Football stats scraper
 
 This command-line tool can retrieve football stats from the flashcore website. It uses the python scraping package, selenium.
