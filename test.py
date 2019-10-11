@@ -8,17 +8,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from scraper.scraper import get_stats_by_match_id
+from scraper.scraper import get_stats_by_match_id, get_match_ids_by_url
 
 
-tests_values = [("Mi67N5em", [0, 2, 76, 24, 18, 7, 2, 2, 6, 3, 10, 2,
+test_values = [("Mi67N5em", [0, 2, 76, 24, 18, 7, 2, 2, 6, 3, 10, 2,
                               16, 12, 9, 1, 1, 2, 0, 2, 11, 14, 712, 228]),
                 ("CtaKK3u6", [1, 4, 44, 56, 10, 13, 3, 7, 6, 4, 1, 2, 15,
                 	          9, 3, 4, 1, 0, 3, 2, 8, 15, 404, 521]),
                 ("nch9U8kc", None),
                 ("QmiDTS43", None)]
 
-@pytest.mark.parametrize('id, expected', tests_values)
+@pytest.mark.parametrize('id, expected', test_values)
 def test_get_stats_by_match_id(id, expected):
 
     chrome_options = Options()
@@ -37,4 +37,23 @@ def test_get_stats_by_match_id(id, expected):
 
     [0, 2, 76, 24, 18, 7, 2, 2, 6, 3, 10, 2,
     16, 12, 9, 1, 1, 2, 0, 2, 11, 14, 712, 228]
+
+
+test_values = [("https://www.flashscore.com/football/england/premier-league-2018-2019/results/",
+                ["zDR1CCoh", "beQqClZI", "IJgl4Zzr", "hxn11XK0", "IszXcbE8",
+                 "tdZj1C33", "Eitlzt4B", "YXjWYg7q", "bNAlpQEi", "bPDT0fwA" ])]
+
+@pytest.mark.parametrize('url, ids_tested', test_values)
+def test_get_match_ids_by_url(url, ids_tested):
+
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver_osx"),
+    	                      options=chrome_options)
+
+    ids = get_match_ids_by_url(url, driver, 10)[0]
+
+    assert all(item in ids for item in ids_tested)
 
