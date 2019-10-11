@@ -13,10 +13,10 @@ from scraper.scraper import get_stats_by_match_id, get_match_ids_by_url
 
 test_values = [("Mi67N5em", [0, 2, 76, 24, 18, 7, 2, 2, 6, 3, 10, 2,
                               16, 12, 9, 1, 1, 2, 0, 2, 11, 14, 712, 228]),
-                ("CtaKK3u6", [1, 4, 44, 56, 10, 13, 3, 7, 6, 4, 1, 2, 15,
+               ("CtaKK3u6", [1, 4, 44, 56, 10, 13, 3, 7, 6, 4, 1, 2, 15,
                 	          9, 3, 4, 1, 0, 3, 2, 8, 15, 404, 521]),
-                ("nch9U8kc", None),
-                ("QmiDTS43", None)]
+               ("nch9U8kc", None),
+               ("QmiDTS43", None)]
 
 @pytest.mark.parametrize('id, expected', test_values)
 def test_get_stats_by_match_id(id, expected):

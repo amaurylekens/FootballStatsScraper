@@ -1,1 +1,4 @@
 chromedriver_osx
+__pycache__
+df.csv
+scraper/__pycache__
