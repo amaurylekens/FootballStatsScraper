@@ -15,7 +15,7 @@ We get the statistics on this type of page :
   <img src="https://github.com/amaurylekens/FootballStatsScraper/blob/master/images/page.png" style="width: 10%; height: 10%"/>
 </p>
 
-The statistics recovered are as follows: Goals, Ball Possession, Goal Attempts, Shots on Goal, Shots off Goal, Blocked Shots, Free Kicks, Corner Kicks, Offsides, Goalkeeper Saves, Fouls, Total Passes (for the two teams). So we recovered 24 stats.
+You can retrieve all types of stats that are offered on these pages by modifying the *params.yml* file.
 
 All the stats are stored in a csv file.
 
@@ -24,7 +24,7 @@ All the stats are stored in a csv file.
 ### Dependencies
 
 * The chromedriver (download [here](https://chromedriver.chromium.org/downloads))
-* Python librairies : csv, argprse, tqdm, selenium
+* Python librairies : csv, argprse, tqdm, selenium, pyyaml
 
 ### Configuration
 
@@ -32,13 +32,15 @@ The repo is organized like this :
 
 
 ```bash
-├── scraper.py
-├── url.txt
+├── scraper
+│   ├── scraper.py
+│   └── ...
+├── params.yml
 ├── images
-└── .gitignore
+└── ...
 ``` 
 
-The *url.txt* file contains the urls that the program will scrape.
+The *params.yml* file contains the urls and the stats that the program will scrape.
 
 ### Launch
 
