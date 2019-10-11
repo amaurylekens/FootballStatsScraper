@@ -3,3 +3,4 @@ python-csv
 tqdm
 codecov
 pytest-cov
+pyyaml
