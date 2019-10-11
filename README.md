@@ -40,7 +40,10 @@ The repo is organized like this :
 └── ...
 ``` 
 
-The *params.yml* file contains the urls and the stats that the program will scrape.
+The *params.yml* file contains the urls and the stats that the program will scrape :
+
+* Valid params *stats* are the titles of the stats found on the flashscore pages.
+* Valid *url* params are flashscore urls that end with */results* (ex: https://www.flashscore.com/football/italy/series-a-2018-2019/results/)
 
 ### Launch
 
